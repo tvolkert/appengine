@@ -146,6 +146,7 @@ class GrpcDatastoreImpl implements raw.Datastore {
         .addAll(keys.map((key) => _codec.encodeKey(key, enforceId: true)));
 
     try {
+      print('~!@ :: $_clientRPCStub :: $request');
       final LookupResponse response = await _clientRPCStub.lookup(request);
       if (response.deferred != null && response.deferred.isNotEmpty) {
         throw raw.DatastoreError(
